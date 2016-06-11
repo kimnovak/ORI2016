@@ -1,0 +1,20 @@
+package model;
+
+/**
+ * Class that models countries that compete in eurovision The idea is to assign
+ * index to every country so that each country can hold information how many
+ * points has other country presented it with each year Example: Albania has
+ * index 0 so if you look up Montenegro and get pointsReceived[0][i] you'll get
+ * how many points has Albania given to Montenegro and index i would be in which
+ * year (starting from 1998 i = 0 ending with 2009 i = 12
+ * 
+ * @author Novak
+ *
+ */
+public class Country {
+	private String name;
+	private int rank;
+	private int numberOfNeighbours;
+	private int index;
+	private int[][] pointsReceived;
+}

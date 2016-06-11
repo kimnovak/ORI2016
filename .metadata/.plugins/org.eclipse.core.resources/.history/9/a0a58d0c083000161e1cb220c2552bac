@@ -1,0 +1,14 @@
+package controller;
+
+import java.util.ArrayList;
+
+import model.Country;
+
+public class App {
+
+	public static void main(String[] args) {
+		ArrayList<String> linesSemi = null;
+		ArrayList<Country> countries = null;
+	}
+
+}

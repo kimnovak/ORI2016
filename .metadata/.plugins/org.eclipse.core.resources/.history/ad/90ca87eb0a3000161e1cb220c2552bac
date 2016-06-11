@@ -1,0 +1,29 @@
+package controller;
+
+import java.util.ArrayList;
+
+import model.Country;
+
+public class App {
+
+	public static void main(String[] args) {
+		ArrayList<String> linesSemi = null;
+		ArrayList<String> linesFinal = null;
+		ArrayList<Country> countries = null;
+		linesSemi = loadData("Semi-Final.csv");
+		linesFinal = loadData("Final.csv");
+	}
+
+	/**
+	 * Method that reads the file line by line and adds each line to
+	 * the retVal ArrayList of Strings and returns created ArrayList
+	 * 
+	 * @param fileName name of the File that is being read
+	 * @return returns an ArrayList of Strings containing lines from the file
+	 */
+	private static ArrayList<String> loadData(String fileName) {
+		ArrayList<String> retVal = null;
+		return retVal;
+	}
+
+}

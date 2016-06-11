@@ -1,0 +1,17 @@
+package controller;
+
+import java.util.ArrayList;
+
+import model.Country;
+
+public class App {
+
+	public static void main(String[] args) {
+		ArrayList<String> linesSemi = null;
+		ArrayList<String> linesFinal = null;
+		ArrayList<Country> countries = null;
+		linesSemi = loadData("Semi-Final.csv", 14);
+		linesFinal = loadData("Final.csv", 17);
+	}
+
+}

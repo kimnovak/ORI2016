@@ -18,12 +18,48 @@ public class App {
 		linesFinal = loadData("Final.csv");
 		loadCountries(countries, linesSemi.get(0));
 		fillMatrix(countries, linesSemi, 14);
-		fillMatrix(countries, linesFinal, 16);		
+		fillMatrix(countries, linesFinal, 16);
+		findNeighbours(countries);
+	}
+
+	private static void findNeighbours(ArrayList<Country> countries) {
+		int[][] pointsMatrix = new int[countries.size()][countries.size()];
+		for(Country c: countries){
+			int yearPoints = 0; 
+			/*
+			 * yearPoints - represents number of years in which one country has given points to the current country
+			 * Example:
+			 * If current country is Albania, while iterating through all countries
+			 * if a country voted for Albania yearPoints will be incremented.
+			 * This is performed for all years of Eurovision contest.
+			 */
+			int[][] pointsReceived = c.getPointsReceived();
+			for(int i = 0; i < pointsReceived.length; i++) {
+				yearPoints = 0;
+				for(int j = 0; j < 12; j++){
+					if(pointsReceived[i][j] > 0){
+						yearPoints++;
+					}
+				}
+				pointsMatrix[c.getIndex()][i] = yearPoints;
+			}
+			for(int i = 0; i < countries.size(); i++){
+				for(int j = 0; j < countries.size(); j++){
+					if(pointsMatrix[i][j] > 5){
+						ArrayList<Integer> list = countries.get(i).getIndexOfNeighbours();
+						if(!list.contains(j)){
+							list.add(j);
+							countries.get(i).setIndexOfNeighbours(list);
+						}
+					}
+				}
+			}
+		}
 	}
 
 	/**
-	 * Method adds countries read from file to the countries list. It assigns a
-	 * name and an index to the country
+	 * Adds countries read from file to the countries list, assigning each country a
+	 * name and an index.
 	 * 
 	 * @param countries
 	 *            ArrayList of countries
@@ -37,7 +73,7 @@ public class App {
 		// [tokens.lenght - 14] number of countries, 12 presents number of years in 1998 - 2009
 		for (int j = 14; j < tokens.length; j++) {
 			countries.add(new Country(tokens[j].trim(), -1, -1, ++i,
-					new int[tokens.length - 14][12]));
+					new int[tokens.length - 14][12], new ArrayList<Integer>()));
 		}
 	}
 
@@ -107,7 +143,7 @@ public class App {
 	}
 
 	/**
-	 * Method that reads the file line by line and adds each line to the retVal
+	 * Reads the file line by line and adds each line to the retVal
 	 * ArrayList of Strings and returns created ArrayList
 	 * 
 	 * @param fileName

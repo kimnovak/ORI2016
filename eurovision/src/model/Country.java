@@ -1,5 +1,7 @@
 package model;
 
+import java.util.ArrayList;
+
 /**
  * Class that models countries that compete in eurovision. The idea is to assign
  * index to every country so that each country can hold information how many
@@ -17,17 +19,19 @@ public class Country {
 	private int numberOfNeighbours;
 	private int index;
 	private int[][] pointsReceived;
+	private ArrayList<Integer> indexOfNeighbours;
 	public Country() {
 		super();
 	}
 	public Country(String name, int rank, int numberOfNeighbours, int index,
-			int[][] pointsReceived) {
+			int[][] pointsReceived, ArrayList<Integer> indexOfNeighbours) {
 		super();
 		this.name = name;
 		this.rank = rank;
 		this.numberOfNeighbours = numberOfNeighbours;
 		this.index = index;
 		this.pointsReceived = pointsReceived;
+		this.indexOfNeighbours = indexOfNeighbours;
 	}
 	public String getName() {
 		return name;
@@ -58,6 +62,12 @@ public class Country {
 	}
 	public void setPointsReceived(int[][] pointsReceived) {
 		this.pointsReceived = pointsReceived;
+	}
+	public ArrayList<Integer> getIndexOfNeighbours() {
+		return indexOfNeighbours;
+	}
+	public void setIndexOfNeighbours(ArrayList<Integer> indexOfNeighbours) {
+		this.indexOfNeighbours = indexOfNeighbours;
 	}
 	
 	

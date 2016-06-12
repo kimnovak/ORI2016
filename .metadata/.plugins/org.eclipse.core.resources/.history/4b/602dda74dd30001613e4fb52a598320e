@@ -20,8 +20,6 @@ public class App {
 		fillMatrix(countries, linesSemi, 14);
 		fillMatrix(countries, linesFinal, 16);
 		findNeighbours(countries);
-		//38 scg 37 srb 29 cg
-		System.out.println(countries.get(29).getIndexOfNeighbours());
 	}
 
 	private static void findNeighbours(ArrayList<Country> countries) {
@@ -40,29 +38,35 @@ public class App {
 				yearPoints = 0;
 				for(int j = 0; j < 12; j++){
 					if(pointsReceived[i][j] > 0){
-						if(c.getIndex() == 38){
-							pointsReceived[37][i]++;
-							pointsReceived[29][i]++;
-						}
 						yearPoints++;
 					}
-					
 				}
 				pointsMatrix[c.getIndex()][i] = yearPoints;
 			}
-		}
-		for(int i = 0; i < countries.size(); i++){
-			for(int j = 0; j < countries.size(); j++){
-				if(pointsMatrix[i][j] > 5){
-					ArrayList<Integer> list = countries.get(i).getIndexOfNeighbours();
-					if(!list.contains(j)){
-						list.add(j);
-						countries.get(i).setIndexOfNeighbours(list);
+			for(int i = 0; i < countries.size(); i++){
+				for(int j = 0; j < countries.size(); j++){
+					if(pointsMatrix[i][j] > 5){
+						ArrayList<Integer> list = countries.get(i).getIndexOfNeighbours();
+						if(!list.contains(j)){
+							list.add(j);
+							countries.get(i).setIndexOfNeighbours(list);
+						}
 					}
 				}
 			}
 		}
-	
+		//since serbia & montenegro split points before 2006 will be added to both
+		ArrayList<Integer> neighboursSCG = countries.get(38).getIndexOfNeighbours();
+		ArrayList<Integer> neighboursSER = countries.get(37).getIndexOfNeighbours();
+		ArrayList<Integer> neighboursMNE = countries.get(29).getIndexOfNeighbours();
+		for(int index: neighboursSCG) {
+			if(!neighboursSER.contains(index)){
+				neighboursSER.add(index);
+			}
+			if(!neighboursMNE.contains(index)){
+				neighboursMNE.add(index);
+			}
+		}
 	}
 
 	/**

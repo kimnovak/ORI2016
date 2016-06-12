@@ -21,7 +21,7 @@ public class App {
 		fillMatrix(countries, linesFinal, 16);
 		findNeighbours(countries);
 		//38 scg 37 srb 29 cg
-		System.out.println(countries.get(29).getIndexOfNeighbours());
+		System.out.println(countries.get(37).getIndexOfNeighbours());
 	}
 
 	private static void findNeighbours(ArrayList<Country> countries) {

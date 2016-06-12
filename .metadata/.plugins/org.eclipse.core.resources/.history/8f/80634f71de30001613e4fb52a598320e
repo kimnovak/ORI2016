@@ -21,7 +21,6 @@ public class App {
 		fillMatrix(countries, linesFinal, 16);
 		findNeighbours(countries);
 		//38 scg 37 srb 29 cg
-		System.out.println(countries.get(29).getIndexOfNeighbours());
 	}
 
 	private static void findNeighbours(ArrayList<Country> countries) {
@@ -50,6 +49,8 @@ public class App {
 				}
 				pointsMatrix[c.getIndex()][i] = yearPoints;
 			}
+			
+			
 		}
 		for(int i = 0; i < countries.size(); i++){
 			for(int j = 0; j < countries.size(); j++){

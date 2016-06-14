@@ -17,13 +17,74 @@ public class App {
 		linesSemi = loadData("Semi-Final.csv");
 		linesFinal = loadData("Final.csv");
 		loadCountries(countries, linesSemi.get(0));
+		loadRegion(countries, linesSemi, linesFinal);
 		fillMatrix(countries, linesSemi, 14);
 		fillMatrix(countries, linesFinal, 16);
 		findNeighbours(countries);
+		addNeighbours(countries);
 		//38 scg 37 srb 29 cg
-		System.out.println(countries.get(29).getIndexOfNeighbours());
+		System.out.println(countries.get(37).getIndexOfNeighbours());
+		for(Country c: countries){
+			System.out.println(c.getName() + " -- " + c.getRegion());
+		}
+		
 	}
-
+	/**
+	 * For each country check which country from the list belongs to the same region
+	 * If they belong to the same region add them as neighbours.
+	 * @param countries
+	 */
+	private static void addNeighbours(ArrayList<Country> countries) {
+		for(Country c: countries){
+			for(Country neighbour: countries){
+				if((c.getRegion()).equals(neighbour.getRegion())){
+					if(c.getIndex() != neighbour.getIndex()){ //country cannot be its own neighbour
+						if(!c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+							//Exception is Serbia and Montenegro which shouldn't be counted as neighbour to Serbia or Montenegro
+							if(c.getName().equals("Serbia") || c.getName().equals("Montenegro")){
+								if(!neighbour.getName().equals("Serbia & Montenegro")){
+									ArrayList<Integer> neighbourIndex = c.getIndexOfNeighbours();
+									neighbourIndex.add(neighbour.getIndex());
+									c.setIndexOfNeighbours(neighbourIndex);
+								}
+							}else{
+								ArrayList<Integer> neighbourIndex = c.getIndexOfNeighbours();
+								neighbourIndex.add(neighbour.getIndex());
+								c.setIndexOfNeighbours(neighbourIndex);
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+	private static void loadRegion(ArrayList<Country> countries, ArrayList<String> linesSemi, ArrayList<String> linesFinal) {
+		for(String line: linesSemi){
+			String[] tokens = line.split(",");
+			for(Country c: countries){
+				if(c.getName().equals(tokens[1])){
+					if(c.getRegion() == null){
+						c.setRegion(tokens[2].trim());
+					}
+				}
+			}
+		}
+		for(String line: linesFinal){
+			String[] tokens = line.split(",");
+			for(Country c: countries){
+				if(c.getName().equals(tokens[1])){
+					if(c.getRegion() == null){
+						c.setRegion(tokens[2].trim());
+					}
+				}
+			}
+		}
+		countries.get(38).setRegion("Former Yugoslavia");
+	}
+	/**
+	 * If one country has given current country points for 6 or more years in the competition that country is counted as a "neighbour"
+	 * @param countries
+	 */
 	private static void findNeighbours(ArrayList<Country> countries) {
 		int[][] pointsMatrix = new int[countries.size()][countries.size()];
 		for(Country c: countries){
@@ -81,7 +142,7 @@ public class App {
 		// [tokens.lenght - 14] number of countries, 12 presents number of years in 1998 - 2009
 		for (int j = 14; j < tokens.length; j++) {
 			countries.add(new Country(tokens[j].trim(), -1, -1, ++i,
-					new int[tokens.length - 14][12], new ArrayList<Integer>()));
+					new int[tokens.length - 14][12], new ArrayList<Integer>(), null));
 		}
 	}
 

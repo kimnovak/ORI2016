@@ -17,6 +17,8 @@ public class Country {
 	private String name;
 	private int[] rank;
 	private int[] numberOfNeighbours;
+	private int[] rankSemi;
+	private int[] nONSemi;
 	private int index;
 	private int[][] pointsReceived;
 	private ArrayList<Integer> indexOfNeighbours;
@@ -24,7 +26,7 @@ public class Country {
 	public Country() {
 		super();
 	}
-	public Country(String name, int[] rank, int numberOfNeighbours[], int index,
+	public Country(String name, int[] rank, int numberOfNeighbours[], int[] rankSemi, int[] nONSemi, int index,
 			int[][] pointsReceived, ArrayList<Integer> indexOfNeighbours, String region) {
 		super();
 		this.name = name;
@@ -34,6 +36,8 @@ public class Country {
 		this.pointsReceived = pointsReceived;
 		this.indexOfNeighbours = indexOfNeighbours;
 		this.region = region;
+		this.rankSemi = rankSemi;
+		this.nONSemi = nONSemi;
 	}
 	public String getName() {
 		return name;
@@ -76,6 +80,18 @@ public class Country {
 	}
 	public void setRegion(String region) {
 		this.region = region;
+	}
+	public int[] getRankSemi() {
+		return rankSemi;
+	}
+	public void setRankSemi(int[] rankSemi) {
+		this.rankSemi = rankSemi;
+	}
+	public int[] getnONSemi() {
+		return nONSemi;
+	}
+	public void setnONSemi(int[] nONSemi) {
+		this.nONSemi = nONSemi;
 	}
 	
 	

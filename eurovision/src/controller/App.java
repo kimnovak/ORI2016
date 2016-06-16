@@ -23,10 +23,10 @@ public class App {
 		findNeighbours(countries);
 		addNeighbours(countries);
 		//38 scg 37 srb 29 cg
-		System.out.println(countries.get(37).getIndexOfNeighbours());
-		//getDataReady(countries, linesSemi, 7);
-		getDataReady(countries, linesFinal, 9);
 		
+		getDataReady(countries, linesSemi, 7);
+		getDataReady(countries, linesFinal, 9);
+		System.out.println(countries.get(37).getRankSemi()[3]);
 	}
 	
 
@@ -39,11 +39,19 @@ public class App {
 			ArrayList<Country> countries2002 = new ArrayList<Country>();
 			ArrayList<Country> countries2003 = new ArrayList<Country>();
 			ArrayList<Country> countries2004 = new ArrayList<Country>();
+			ArrayList<Country> countries2004sf = new ArrayList<Country>();
 			ArrayList<Country> countries2005 = new ArrayList<Country>();
+			ArrayList<Country> countries2005sf = new ArrayList<Country>();
 			ArrayList<Country> countries2006 = new ArrayList<Country>();
+			ArrayList<Country> countries2006sf = new ArrayList<Country>();
 			ArrayList<Country> countries2007 = new ArrayList<Country>();
+			ArrayList<Country> countries2007sf = new ArrayList<Country>();
 			ArrayList<Country> countries2008 = new ArrayList<Country>();
+			ArrayList<Country> countries2008sf1 = new ArrayList<Country>();
+			ArrayList<Country> countries2008sf2 = new ArrayList<Country>();
 			ArrayList<Country> countries2009 = new ArrayList<Country>();
+			ArrayList<Country> countries2009sf1 = new ArrayList<Country>();
+			ArrayList<Country> countries2009sf2 = new ArrayList<Country>();
 		
 			for(String line: lines) {
 				String[] tokens = line.split(",");
@@ -107,65 +115,145 @@ public class App {
 					}
 				
 				}else if(tokens[0].contains("2004")){
-					for(Country c: countries){
-						if(tokens[1].trim().equals(c.getName())){
-							countries2004.add(c);
-							int[] rank = c.getRank();
-							rank[6] = Integer.parseInt(tokens[placeColumn]);
-							c.setRank(rank);
+					if(tokens[0].contains("SF1")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2004sf.add(c);
+								int[] rank = c.getRankSemi();
+								rank[0] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else{
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2004.add(c);
+								int[] rank = c.getRank();
+								rank[6] = Integer.parseInt(tokens[placeColumn]);
+								c.setRank(rank);
+							}
 						}
 					}
-					
 				}else if(tokens[0].contains("2005")){
-					for(Country c: countries){
-						if(tokens[1].trim().equals(c.getName())){
-							countries2005.add(c);
-							int[] rank = c.getRank();
-							rank[7] = Integer.parseInt(tokens[placeColumn]);
-							c.setRank(rank);
+					if(tokens[0].contains("SF1")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2005sf.add(c);
+								int[] rank = c.getRankSemi();
+								rank[1] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else{
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2005.add(c);
+								int[] rank = c.getRank();
+								rank[7] = Integer.parseInt(tokens[placeColumn]);
+								c.setRank(rank);
+							}
 						}
 					}
-					
 				}else if(tokens[0].contains("2006")){
-					for(Country c: countries){
-						if(tokens[1].trim().equals(c.getName())){
-							countries2006.add(c);
-							int[] rank = c.getRank();
-							rank[8] = Integer.parseInt(tokens[placeColumn]);
-							c.setRank(rank);
+					if(tokens[0].contains("SF1")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2006sf.add(c);
+								int[] rank = c.getRankSemi();
+								rank[2] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else{
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2006.add(c);
+								int[] rank = c.getRank();
+								rank[8] = Integer.parseInt(tokens[placeColumn]);
+								c.setRank(rank);
+							}
 						}
 					}
-					
 				}else if(tokens[0].contains("2007")){
-					for(Country c: countries){
-						if(tokens[1].trim().equals(c.getName())){
-							countries2007.add(c);
-							int[] rank = c.getRank();
-							rank[9] = Integer.parseInt(tokens[placeColumn]);
-							c.setRank(rank);
+					if(tokens[0].contains("SF1")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2007sf.add(c);
+								int[] rank = c.getRankSemi();
+								rank[3] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else{
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2007.add(c);
+								int[] rank = c.getRank();
+								rank[9] = Integer.parseInt(tokens[placeColumn]);
+								c.setRank(rank);
+							}
 						}
 					}
 					
 				}else if(tokens[0].contains("2008")){
-					for(Country c: countries){
-						if(tokens[1].trim().equals(c.getName())){
-							countries2008.add(c);
-							int[] rank = c.getRank();
-							rank[10] = Integer.parseInt(tokens[placeColumn]);
-							c.setRank(rank);
+					if(tokens[0].contains("SF1")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2008sf1.add(c);
+								int[] rank = c.getRankSemi();
+								rank[4] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else if(tokens[0].contains("SF2")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2008sf2.add(c);
+								int[] rank = c.getRankSemi();
+								rank[5] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else{
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2008.add(c);
+								int[] rank = c.getRank();
+								rank[10] = Integer.parseInt(tokens[placeColumn]);
+								c.setRank(rank);
+							}
 						}
 					}
 					
 				}else if(tokens[0].contains("2009")){
-					for(Country c: countries){
-						if(tokens[1].trim().equals(c.getName())){
-							countries2009.add(c);
-							int[] rank = c.getRank();
-							rank[11] = Integer.parseInt(tokens[placeColumn]);
-							c.setRank(rank);
+					if(tokens[0].contains("SF1")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2009sf1.add(c);
+								int[] rank = c.getRankSemi();
+								rank[6] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else if(tokens[0].contains("SF2")){
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2009sf2.add(c);
+								int[] rank = c.getRankSemi();
+								rank[7] = Integer.parseInt(tokens[placeColumn]);
+								c.setRankSemi(rank);
+							}
+						}
+					}else{
+						for(Country c: countries){
+							if(tokens[1].trim().equals(c.getName())){
+								countries2009.add(c);
+								int[] rank = c.getRank();
+								rank[11] = Integer.parseInt(tokens[placeColumn]);
+								c.setRank(rank);
+							}
 						}
 					}
-					
 				}
 			}
 			for(Country c: countries){
@@ -392,7 +480,7 @@ public class App {
 		String[] tokens = firstLine.split(",");
 		// [tokens.lenght - 14] number of countries, 12 presents number of years in 1998 - 2009
 		for (int j = 14; j < tokens.length; j++) {
-			countries.add(new Country(tokens[j].trim(), new int[12], new int[12], ++i,
+			countries.add(new Country(tokens[j].trim(), new int[12], new int[12], new int[8], new int[8], ++i,
 					new int[tokens.length - 14][12], new ArrayList<Integer>(), null));
 		}
 	}

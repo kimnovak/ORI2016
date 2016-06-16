@@ -15,8 +15,8 @@ import java.util.ArrayList;
  */
 public class Country {
 	private String name;
-	private int rank;
-	private int numberOfNeighbours;
+	private int[] rank;
+	private int[] numberOfNeighbours;
 	private int index;
 	private int[][] pointsReceived;
 	private ArrayList<Integer> indexOfNeighbours;
@@ -24,7 +24,7 @@ public class Country {
 	public Country() {
 		super();
 	}
-	public Country(String name, int rank, int numberOfNeighbours, int index,
+	public Country(String name, int[] rank, int numberOfNeighbours[], int index,
 			int[][] pointsReceived, ArrayList<Integer> indexOfNeighbours, String region) {
 		super();
 		this.name = name;
@@ -41,16 +41,16 @@ public class Country {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public int getRank() {
+	public int[] getRank() {
 		return rank;
 	}
-	public void setRank(int rank) {
+	public void setRank(int[] rank) {
 		this.rank = rank;
 	}
-	public int getNumberOfNeighbours() {
+	public int[] getNumberOfNeighbours() {
 		return numberOfNeighbours;
 	}
-	public void setNumberOfNeighbours(int numberOfNeighbours) {
+	public void setNumberOfNeighbours(int[] numberOfNeighbours) {
 		this.numberOfNeighbours = numberOfNeighbours;
 	}
 	public int getIndex() {

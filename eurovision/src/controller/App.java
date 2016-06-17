@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 import model.Country;
+import model.LinearRegression;
 
 public class App {
 
@@ -27,8 +28,72 @@ public class App {
 		getDataReady(countries, linesSemi, 7);
 		getDataReady(countries, linesFinal, 9);
 		System.out.println(countries.get(37).getRankSemi()[3]);
+		System.out.println(countries.get(37).getnONSemi()[3]);
+		int x[] = getX(countries);
+		int y[] = getY(countries);
+	/*	for(int i = 0; i < x.length; i++){
+			System.out.println(x[i]);
+		}*/
+		LinearRegression lr = new LinearRegression();
+		lr.fit(x, y);
+		System.out.println(lr.getK() + " " + lr.getN());
+		double res = lr.predict(15);
+		System.out.println(res);
+		
 	}
 	
+
+	private static int[] getY(ArrayList<Country> countries) {
+		int[] retVal = new int[461];
+		int i = 0;
+		for(Country c: countries){
+			int[] rank = c.getRank();
+			for(int k = 0; k < rank.length; k++){
+				if(rank[k] != 0){
+					retVal[i] = rank[k];
+					i++;
+				}
+			}
+		}
+		for(Country c: countries){
+			int[] rank = c.getRankSemi();
+			for(int k = 0; k < rank.length; k++){
+				if(rank[k] != 0){
+					retVal[i] = rank[k];
+					i++;
+				}
+			}
+		}
+		return retVal;
+	}
+
+
+	private static int[] getX(ArrayList<Country> countries) {
+		int[] retVal = new int[461];
+		int i = 0;
+		for(Country c: countries){
+			int[] rank = c.getRank();
+			int[] nON = c.getNumberOfNeighbours();
+			for(int k = 0; k < rank.length; k++){
+				if(rank[k] != 0){
+					retVal[i] = nON[k];
+					i++;
+				}
+			}
+		}
+		for(Country c: countries){
+			int[] rank = c.getRankSemi();
+			int[] nON = c.getnONSemi();
+			for(int k = 0; k < rank.length; k++){
+				if(rank[k] != 0){
+					retVal[i] = nON[k];
+					i++;
+				}
+			}
+		}
+		return retVal;
+	}
+
 
 	private static void getDataReady(ArrayList<Country> countries,
 			ArrayList<String> lines, int placeColumn) {
@@ -361,6 +426,78 @@ public class App {
 						int[] nON = c.getNumberOfNeighbours();
 						nON[11]++;
 						c.setNumberOfNeighbours(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2004sf){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[0]++;
+						c.setnONSemi(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2005sf){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[1]++;
+						c.setnONSemi(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2006sf){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[2]++;
+						c.setnONSemi(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2007sf){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[3]++;
+						c.setnONSemi(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2008sf1){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[4]++;
+						c.setnONSemi(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2008sf2){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[5]++;
+						c.setnONSemi(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2009sf1){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[6]++;
+						c.setnONSemi(nON);
+					}
+				}
+			}
+			for(Country c: countries){
+				for(Country neighbour: countries2009sf2){
+					if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
+						int[] nON = c.getnONSemi();
+						nON[7]++;
+						c.setnONSemi(nON);
 					}
 				}
 			}

@@ -1,0 +1,52 @@
+package model;
+
+public class LinearRegression {
+	private double k;
+	private double n;
+
+	public LinearRegression() {
+		super();
+		// TODO Auto-generated constructor stub
+	}
+
+	public double getK() {
+		return k;
+	}
+
+	public void setK(double k) {
+		this.k = k;
+	}
+
+	public double getN() {
+		return n;
+	}
+
+	public void setN(double n) {
+		this.n = n;
+	}
+
+	public void fit(int[] x, int[] y) {
+		double suma_proizvoda_x_y = 0;
+		double suma_x = 0; // moze kao x.Sum();
+		double suma_y = 0; // moze kao y.Sum();
+		double suma_x_na_kvadrat = 0;
+
+		for (int i = 0; i < x.length; i++) {
+			suma_proizvoda_x_y += x[i] * y[i];
+			suma_x += x[i];
+			suma_y += y[i];
+			suma_x_na_kvadrat += x[i] * x[i];
+		}
+
+		this.k = (x.length * suma_proizvoda_x_y - suma_x * suma_y)
+				/ (x.length * suma_x_na_kvadrat - suma_x * suma_x);
+		this.n = (suma_y - this.k * suma_x) / x.length;
+	}
+	   public double predict(double x)
+       {   
+           // TODO 3: Implementirati funkciju predict koja na osnovu x vrednosti vraca
+           // predvinjenu vrednost y
+           return k*x+n;
+       }
+
+}

@@ -1,0 +1,10 @@
+package view;
+
+import javax.swing.JPanel;
+
+public class PanelZemlje extends JPanel {
+
+	public PanelZemlje() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+	}
+}

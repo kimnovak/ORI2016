@@ -1,0 +1,20 @@
+package view;
+
+import javax.swing.BoxLayout;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+
+public class PanelZemlje extends JPanel {
+
+	public PanelZemlje() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		JCheckBox c1 = new JCheckBox("Albania");
+        this.add(c1);
+        c1 = new JCheckBox("Andorra");
+        this.add(c1);
+        c1 = new JCheckBox("Check3");
+        this.add(c1);
+        c1 = new JCheckBox("Check4");
+        this.add(c1);
+	}
+}

@@ -8,6 +8,7 @@ import java.util.ArrayList;
 
 import model.Country;
 import model.LinearRegression;
+import view.MainFrame;
 
 public class App {
 
@@ -32,13 +33,17 @@ public class App {
 		int x[] = getX(countries);
 		int y[] = getY(countries);
 	/*	for(int i = 0; i < x.length; i++){
-			System.out.println(x[i]);
+			System.out.println(x[i] + " rank " + y[i]);
 		}*/
 		LinearRegression lr = new LinearRegression();
 		lr.fit(x, y);
 		System.out.println(lr.getK() + " " + lr.getN());
-		double res = lr.predict(15);
+		double res = lr.predict(8);
 		System.out.println(res);
+		MainFrame mf = new MainFrame(countries);
+		mf.setVisible(true);
+		
+		
 		
 	}
 	
@@ -705,6 +710,7 @@ public class App {
 			while ((line = br.readLine()) != null) {
 				retVal.add(line);
 			}
+			br.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

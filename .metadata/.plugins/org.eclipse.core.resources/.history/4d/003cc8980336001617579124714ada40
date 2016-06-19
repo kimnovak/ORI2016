@@ -1,0 +1,19 @@
+package view;
+
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+
+public class PanelZemlje extends JPanel {
+
+	public PanelZemlje() {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		 JCheckBox c1 = new JCheckBox("Check1");
+        panel.add(c1);
+        c1 = new JCheckBox("Check2");
+        panel.add(c1);
+        c1 = new JCheckBox("Check3");
+        panel.add(c1);
+        c1 = new JCheckBox("Check4");
+        panel.add(c1);
+	}
+}

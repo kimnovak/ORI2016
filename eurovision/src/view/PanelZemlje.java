@@ -14,6 +14,7 @@ import model.Country;
 public class PanelZemlje extends JPanel {
 
 	private ArrayList<JCheckBox> listCheckBox;
+	private ArrayList<JRadioButton> listRadioButton;
 	public PanelZemlje(ArrayList<Country> countries) {
 		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 		ButtonGroup group = new ButtonGroup();
@@ -23,13 +24,20 @@ public class PanelZemlje extends JPanel {
 		firstSemiButton.setSelected(true);
 
 	    JRadioButton secondSemiButton = new JRadioButton("2nd Semifinal");
+	    JRadioButton finalButton = new JRadioButton("Final");
 	   // catButton.setMnemonic(KeyEvent.VK_C);
 	 //   catButton.setActionCommand(catString);
 	    group.add(firstSemiButton);
 	    group.add(secondSemiButton);
+	    group.add(finalButton);
 	    this.add(firstSemiButton);
 	    this.add(secondSemiButton);
+	    this.add(finalButton);
         listCheckBox = new ArrayList<JCheckBox>();
+        listRadioButton = new ArrayList<JRadioButton>();
+        listRadioButton.add(firstSemiButton);
+        listRadioButton.add(secondSemiButton);
+        listRadioButton.add(finalButton);
         int i = 0;
         for(Country c: countries){
         	JCheckBox c1 = new JCheckBox(c.getName());
@@ -43,6 +51,12 @@ public class PanelZemlje extends JPanel {
 	}
 	public void setListCheckBox(ArrayList<JCheckBox> listCheckBox) {
 		this.listCheckBox = listCheckBox;
+	}
+	public ArrayList<JRadioButton> getListRadioButton() {
+		return listRadioButton;
+	}
+	public void setListRadioButton(ArrayList<JRadioButton> listRadioButton) {
+		this.listRadioButton = listRadioButton;
 	}
 	
 }

@@ -40,7 +40,7 @@ public class App {
 		System.out.println(lr.getK() + " " + lr.getN());
 		double res = lr.predict(8);
 		System.out.println(res);
-		MainFrame mf = new MainFrame(countries);
+		MainFrame mf = new MainFrame(countries, lr);
 		mf.setVisible(true);
 		
 		

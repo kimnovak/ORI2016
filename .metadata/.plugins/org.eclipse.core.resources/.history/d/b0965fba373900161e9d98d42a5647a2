@@ -91,9 +91,7 @@ public class MainFrame extends JFrame{
 				  ArrayList<Double> zaSort = new ArrayList<Double>();
 				  
 				  for(Country c: map.keySet()) { 
-					  if(!c.getName().equals("Germany") && !c.getName().equals("United Kingdom") && !c.getName().equals("Spain")){
-						  zaSort.add(map.get(c));
-					  }
+					  zaSort.add(map.get(c));
 				  }
 				  for(Double d: zaSort) {
 					  Collections.sort(zaSort);
@@ -102,7 +100,7 @@ public class MainFrame extends JFrame{
 					  System.out.println(d);
 				  }
 				  Double granica = zaSort.get(9);
-				  
+
 				  s += "---------------------- \n";
 				  for(Country c: map.keySet()) {
 					  s += c.getName() + " " + map.get(c) + "\n";

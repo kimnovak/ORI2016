@@ -5,8 +5,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.HashMap;
 
 import javax.swing.ImageIcon;
@@ -88,21 +86,6 @@ public class MainFrame extends JFrame{
 					  s += c.getName() + " " + nONi.get(c) + "\n";
 					  
 				  }
-				  ArrayList<Double> zaSort = new ArrayList<Double>();
-				  
-				  for(Country c: map.keySet()) { 
-					  if(!c.getName().equals("Germany") && !c.getName().equals("United Kingdom") && !c.getName().equals("Spain")){
-						  zaSort.add(map.get(c));
-					  }
-				  }
-				  for(Double d: zaSort) {
-					  Collections.sort(zaSort);
-				  }
-				  for(Double d: zaSort){
-					  System.out.println(d);
-				  }
-				  Double granica = zaSort.get(9);
-				  
 				  s += "---------------------- \n";
 				  for(Country c: map.keySet()) {
 					  s += c.getName() + " " + map.get(c) + "\n";

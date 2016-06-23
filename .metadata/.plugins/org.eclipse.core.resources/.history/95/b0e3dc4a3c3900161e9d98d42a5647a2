@@ -102,7 +102,7 @@ public class MainFrame extends JFrame{
 					  System.out.println(d);
 				  }
 				  Double granica = zaSort.get(9);
-				  
+
 				  s += "---------------------- \n";
 				  for(Country c: map.keySet()) {
 					  s += c.getName() + " " + map.get(c) + "\n";

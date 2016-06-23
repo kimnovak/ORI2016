@@ -243,18 +243,24 @@ public class MainFrame extends JFrame{
 				  
 				
 				  Double najbolji = Collections.min(zaSort);
-				 
-				  for(Country c: map.keySet()) {
-					  if(map.get(c) == najbolji) {
-						  s += "najbolji je: " + c.getName();
-						  break;
+				  int brojac = 0;
+				/*  for(Country c: map.keySet()) {
+					  if(map.get(c) <= granica) {
+						  if(brojac < 10){
+							  if(!c.getName().equals("Germany") && !c.getName().equals("United Kingdom") && !c.getName().equals("Spain")){
+								  countriesQualifed.add(c);
+								  brojac++;
+							  }
+						  }else{
+							  break;
+						  }
 					  }
-				  }
+				  }*/
 				  s += "---------------------- \n";
 				  
-			/*	  for(Country c: countriesQualifed) {
+				  for(Country c: countriesQualifed) {
 					  s += c.getName() + "\n";
-				  }*/
+				  }
 				  text.setText(s);
 			  }
 			  

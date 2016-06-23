@@ -252,9 +252,9 @@ public class MainFrame extends JFrame{
 				  }
 				  s += "---------------------- \n";
 				  
-			/*	  for(Country c: countriesQualifed) {
+				  for(Country c: countriesQualifed) {
 					  s += c.getName() + "\n";
-				  }*/
+				  }
 				  text.setText(s);
 			  }
 			  

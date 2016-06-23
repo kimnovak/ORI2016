@@ -199,63 +199,7 @@ public class MainFrame extends JFrame{
 				  
 			  }else{
 				  //finale
-				  //rangirati opet pozvati predict sve isto u sustini samo lista kvalifikovanih
-				  String s = "";
-				  HashMap<Country, Integer[]> nON = new HashMap<Country, Integer[]>();
-				  HashMap<Country, Double> map = new HashMap<Country, Double>();
-				  for(Country c: countriesQualifed) {
-					  Integer[] neighbours = new Integer[countriesQualifed.size()];
-					  int i = 0;
-					  for(Country neighbour: countriesQualifed) {
-						
-							  if(c.getIndexOfNeighbours().contains(neighbour.getIndex())){
-								  neighbours[i] = neighbour.getIndex();
-								  i++;
-							  }
-						  
-					  }
-					  nON.put(c, neighbours);
-				  }
-				  HashMap<Country, Integer> nONi = new HashMap<Country, Integer>();
-				  for (Country c : nON.keySet()){
-					  int brojac = 0;
-					  for(Integer t : nON.get(c)){
-						  if(t != null && t > 0){
-							  brojac++;
-						  }
-					  }
-					  nONi.put(c, brojac);
-				  }
-				  //umesto u string strpati ih za predikciju
-				  for(Country c: nONi.keySet()) {
-					  double p = lr.predict(nONi.get(c));
-					  map.put(c, p);
-					  s += c.getName() + " " + nONi.get(c) + "\n";
-					  
-				  }
-				  ArrayList<Double> zaSort = new ArrayList<Double>();
-				  
-				  for(Country c: map.keySet()) { 
-					  
-						  zaSort.add(map.get(c));
-					 
-				  }
-				  
-				
-				  Double najbolji = Collections.min(zaSort);
-				 
-				  for(Country c: map.keySet()) {
-					  if(map.get(c) == najbolji) {
-						  s += "najbolji je: " + c.getName();
-						  break;
-					  }
-				  }
-				  s += "---------------------- \n";
-				  
-			/*	  for(Country c: countriesQualifed) {
-					  s += c.getName() + "\n";
-				  }*/
-				  text.setText(s);
+				  //rangirati
 			  }
 			  
 		  }

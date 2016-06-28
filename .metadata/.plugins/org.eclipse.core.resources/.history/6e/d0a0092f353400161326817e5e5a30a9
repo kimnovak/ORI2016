@@ -1,6 +1,0 @@
-package model;
-
-public class LinearRegression {
-	private double k;
-	private double n;
-}

@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.HashMap;
 
@@ -21,6 +20,10 @@ import model.Country;
 import model.LinearRegression;
 
 public class MainFrame extends JFrame{
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	ArrayList<Country> countries;
 	public MainFrame(final ArrayList<Country> countries, final LinearRegression lr){
 		this.countries = countries;
@@ -86,7 +89,7 @@ public class MainFrame extends JFrame{
 				  for(Country c: nONi.keySet()) {
 					  double p = lr.predict(nONi.get(c));
 					  map.put(c, p);
-					  s += c.getName() + " " + nONi.get(c) + "\n";
+					  s += c.getName() + " " + nONi.get(c) + ", " + "\n";
 					  
 				  }
 				  ArrayList<Double> zaSort = new ArrayList<Double>();
@@ -96,9 +99,10 @@ public class MainFrame extends JFrame{
 						  zaSort.add(map.get(c));
 					  }
 				  }
-				  for(Double d: zaSort) {
+				  /*for(Double d: zaSort) {
 					  Collections.sort(zaSort);
-				  }
+				  }*/
+				  Collections.sort(zaSort);
 				  for(Double d: zaSort){
 					  System.out.println(d);
 				  }
@@ -116,7 +120,7 @@ public class MainFrame extends JFrame{
 						  }
 					  }
 				  }
-				  s += "---------------------- \n";
+				  s += "---------------------- \n Kvalifikovani: \n";
 				  
 				  for(Country c: countriesQualifed) {
 					  s += c.getName() + "\n";
@@ -127,9 +131,11 @@ public class MainFrame extends JFrame{
 				  for(int i = 0; i < pz.getListCheckBox().size(); i++) {
 					  if(pz.getListCheckBox().get(i).isSelected()){
 						  Country country = getCountryById(i);
-						  countriesSemiFinal2.add(country);
+						  if(!countriesSemiFinal.contains(country))
+							  countriesSemiFinal2.add(country);
 					  }
 				  }
+				 
 				  String s = "";
 				  HashMap<Country, Integer[]> nON = new HashMap<Country, Integer[]>();
 				  HashMap<Country, Double> map = new HashMap<Country, Double>();
@@ -160,7 +166,7 @@ public class MainFrame extends JFrame{
 				  for(Country c: nONi.keySet()) {
 					  double p = lr.predict(nONi.get(c));
 					  map.put(c, p);
-					  s += c.getName() + " " + nONi.get(c) + "\n";
+					  s += c.getName() + " " + nONi.get(c) + ", " + "\n";
 					  
 				  }
 				  ArrayList<Double> zaSort = new ArrayList<Double>();
@@ -170,9 +176,10 @@ public class MainFrame extends JFrame{
 						  zaSort.add(map.get(c));
 					  }
 				  }
-				  for(Double d: zaSort) {
+				  /*for(Double d: zaSort) {
 					  Collections.sort(zaSort);
-				  }
+				  }*/
+				  Collections.sort(zaSort);
 				  for(Double d: zaSort){
 					  System.out.println(d);
 				  }
@@ -190,7 +197,7 @@ public class MainFrame extends JFrame{
 						  }
 					  }
 				  }
-				  s += "---------------------- \n";
+				  s += "---------------------- \n Kvalifikovani: \n";
 				  
 				  for(Country c: countriesQualifed) {
 					  s += c.getName() + "\n";

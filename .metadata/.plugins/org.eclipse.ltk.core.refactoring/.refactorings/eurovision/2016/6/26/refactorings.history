@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring accessors="true" comment="Delete 6 elements from project &apos;eurovision&apos;&#x0D;&#x0A;- Original project: &apos;eurovision&apos;&#x0D;&#x0A;- Original elements:&#x0D;&#x0A;     ajt-2.9.jar&#x0D;&#x0A;     commons-math-1.2.jar&#x0D;&#x0A;     Jama-1.0.2.jar&#x0D;&#x0A;     javaml-0.1.7.jar&#x0D;&#x0A;     libsvm.jar&#x0D;&#x0A;     weka.jar" description="Delete elements" element1="lib/javaml-0.1.7.jar" element2="lib/ajt-2.9.jar" element3="lib/commons-math-1.2.jar" element4="lib/Jama-1.0.2.jar" element5="lib/libsvm.jar" element6="lib/weka.jar" elements="0" flags="589830" id="org.eclipse.jdt.ui.delete" resources="6" stamp="1466821717810" subPackages="false" version="1.0"/>
+</session>

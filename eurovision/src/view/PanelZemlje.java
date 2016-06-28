@@ -1,6 +1,5 @@
 package view;
 
-import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 
 import javax.swing.BoxLayout;
@@ -13,6 +12,10 @@ import model.Country;
 
 public class PanelZemlje extends JPanel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private ArrayList<JCheckBox> listCheckBox;
 	private ArrayList<JRadioButton> listRadioButton;
 	public PanelZemlje(ArrayList<Country> countries) {

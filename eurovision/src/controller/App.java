@@ -1,8 +1,10 @@
 package controller;
 
 import java.io.BufferedReader;
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -12,7 +14,7 @@ import view.MainFrame;
 
 public class App {
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws IOException {
 		ArrayList<String> linesSemi = null;
 		ArrayList<String> linesFinal = null;
 		ArrayList<Country> countries = new ArrayList<Country>();
@@ -32,9 +34,15 @@ public class App {
 		System.out.println(countries.get(37).getnONSemi()[3]);
 		int x[] = getX(countries);
 		int y[] = getY(countries);
-	/*	for(int i = 0; i < x.length; i++){
-			System.out.println(x[i] + " rank " + y[i]);
-		}*/
+		
+		File file = new File("zaRegresiju.txt");
+		FileWriter fw = new FileWriter(file.getAbsoluteFile());
+		BufferedWriter bw = new BufferedWriter(fw);
+		for(int i = 0; i < x.length; i++){
+			
+			bw.write(x[i] + " " + y[i] + "\n");
+		}
+		bw.close();
 		LinearRegression lr = new LinearRegression();
 		lr.fit(x, y);
 		System.out.println(lr.getK() + " " + lr.getN());

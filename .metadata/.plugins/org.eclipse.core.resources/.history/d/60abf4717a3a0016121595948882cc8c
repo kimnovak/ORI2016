@@ -1,0 +1,61 @@
+package view;
+
+import java.util.ArrayList;
+
+import javax.swing.BoxLayout;
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBox;
+import javax.swing.JPanel;
+import javax.swing.JRadioButton;
+
+import model.Country;
+
+public class PanelZemlje extends JPanel {
+
+	private ArrayList<JCheckBox> listCheckBox;
+	private ArrayList<JRadioButton> listRadioButton;
+	public PanelZemlje(ArrayList<Country> countries) {
+		setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+		ButtonGroup group = new ButtonGroup();
+		JRadioButton firstSemiButton = new JRadioButton("1st Semifinal");
+	    //birdButton.setMnemonic(KeyEvent.VK_B);
+	   // birdButton.setActionCommand(birdString);
+		firstSemiButton.setSelected(true);
+
+	    JRadioButton secondSemiButton = new JRadioButton("2nd Semifinal");
+	    JRadioButton finalButton = new JRadioButton("Final");
+	   // catButton.setMnemonic(KeyEvent.VK_C);
+	 //   catButton.setActionCommand(catString);
+	    group.add(firstSemiButton);
+	    group.add(secondSemiButton);
+	    group.add(finalButton);
+	    this.add(firstSemiButton);
+	    this.add(secondSemiButton);
+	    this.add(finalButton);
+        listCheckBox = new ArrayList<JCheckBox>();
+        listRadioButton = new ArrayList<JRadioButton>();
+        listRadioButton.add(firstSemiButton);
+        listRadioButton.add(secondSemiButton);
+        listRadioButton.add(finalButton);
+        int i = 0;
+        for(Country c: countries){
+        	JCheckBox c1 = new JCheckBox(c.getName());
+        	listCheckBox.add(c1);
+        	this.add(listCheckBox.get(i));
+        	i++;
+        }
+	}
+	public ArrayList<JCheckBox> getListCheckBox() {
+		return listCheckBox;
+	}
+	public void setListCheckBox(ArrayList<JCheckBox> listCheckBox) {
+		this.listCheckBox = listCheckBox;
+	}
+	public ArrayList<JRadioButton> getListRadioButton() {
+		return listRadioButton;
+	}
+	public void setListRadioButton(ArrayList<JRadioButton> listRadioButton) {
+		this.listRadioButton = listRadioButton;
+	}
+	
+}
